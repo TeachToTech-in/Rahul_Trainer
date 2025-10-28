@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+// Reverse String Using Iteration
 void reverseString(char *s, int sSize)
 {
     int i = 0;
@@ -21,18 +21,25 @@ void swap(char *a, char *b)
     *a = *b;
     *b = temp;
 }
-//
-void reverseStringRecursion(char *s, int sSize)
+// Reverse string Using Recursion
+void helper(int start, int end, char *s)
 {
-    if (i < j)
-    {
-    }
+    if (start >= end)
+        return;
+    char temp = s[start];
+    s[start] = s[end];
+    s[end] = temp;
+    helper(start + 1, end - 1, s);
+}
+void reverseStringRecursive(char *s, int sSize)
+{
+    helper(0, sSize - 1, s);
 }
 int main()
 {
-    char arr[] = "hello";
+    char arr[] = "Rahul";
     printf("%s \n", arr);
-    reverseString(arr, 5);
+    reverseStringRecursive(arr, 5);
     printf("%s \n", arr);
     return 0;
 }
